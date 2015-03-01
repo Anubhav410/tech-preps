@@ -62,23 +62,27 @@ void print(priority_queue* q1){
     cout << endl;
 }
 
-void bubble_down(priority_queue* q1 , int n){
-//    cout <<"Bubble down\n";
-    int i;
-    int young_child = pq_young_child(n);
-    if(young_child <= n){
-    int min_child = -1;
 
-    for(i = 0; i < 2 ; i++){
-        if(q1->q[young_child + i] < q1->q[n]){
-            min_child = young_child + i;
-            
+void bubble_down(priority_queue* q1 , int p){
+    int c;
+    int i ;
+    int min_index ;
+    
+    c = pq_young_child(p);
+    min_index = p;
+    for(i =0 ; i <= 1 ;i++){
+        if((c+i) <= q1->n){
+            if(q1->q[min_index] > q1->q[c+i])
+                min_index = c+i;
         }
+        
     }
     
-    swap(q1 , min_child , n);
-    bubble_down(q1 , min_child);
+    if(min_index != p){
+        swap(q1,p,min_index);
+        bubble_down(q1,min_index);
     }
+    
 }
 
 int get_minimum(priority_queue* q1){
@@ -87,7 +91,7 @@ int get_minimum(priority_queue* q1){
     q1->q[1] = q1->q[n];
     q1->n = q1->n - 1;
 
-    bubble_down(q1 , 1);
+    bubble_down1(q1 , 1);
 
     return min_item;
 }
@@ -95,15 +99,18 @@ int get_minimum(priority_queue* q1){
 int main(){
     priority_queue* q1;
     init_queue(q1) ;
-    insert(q1 , 3);
-    insert(q1 , 2);
-    insert(q1 , 1);
-    
+    insert(q1 , 1492);
+    insert(q1 , 1783);
+    insert(q1 , 1776);
+    insert(q1 , 1804);
+    insert(q1,1);
+    insert(q1,2);
 
+    int loop = q1->n;
+    while(loop--){
     cout <<"Min : " << get_minimum(q1) <<"\n";
-    cout <<"Min : " << get_minimum(q1) <<"\n";
-    cout <<"Min : " << get_minimum(q1)<<"\n";
+    }
 
-//    print(q1);
+   // print(q1);
     return 0;
 }

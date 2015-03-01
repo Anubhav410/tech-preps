@@ -9,8 +9,9 @@ typedef struct priority_queue{
     
 }priority_queue;
 
-void init_queue(priority_queue* q){
-    q->n  = 0;
+void init_queue(priority_queue** q){
+    (*q) = (priority_queue*)malloc(sizeof(priority_queue));
+    (*q)->n  = 0;
 }
 
 int pq_parent(int  n){
@@ -91,11 +92,12 @@ int get_minimum(priority_queue* q1){
     q1->q[1] = q1->q[n];
     q1->n = q1->n - 1;
 
-    bubble_down1(q1 , 1);
+    bubble_down(q1 , 1);
 
     return min_item;
 }
 
+/*
 int main(){
     priority_queue* q1;
     init_queue(q1) ;
@@ -114,3 +116,4 @@ int main(){
    // print(q1);
     return 0;
 }
+*/

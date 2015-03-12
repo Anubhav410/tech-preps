@@ -20,14 +20,14 @@ typedef struct map{
 }map;
 
 
-void initializeMap(map* m){
-	m = (map*)malloc(sizeof(map));
-	m->numEdges = 0;
-	m->numVertices = 0;
+void initializeMap(map** m){
+	*m = (map*)malloc(sizeof(map));
+	(*m)->numEdges = 0;
+	(*m)->numVertices = 0;
 	int i;
 	for(i = 0 ; i < MAXNUM ; i++){
-		m->x[i]  = NULL;
-		m->degree[i] = 0;
+		(*m)->x[i]  = NULL;
+		(*m)->degree[i] = 0;
 	}
 }
 
@@ -38,21 +38,46 @@ void insertEdge(map* m , int a , int b , bool directed){
 	temp->weight = 0;
 	temp->link = m->x[a];
 
-	m->degree[a]++;
+	m->degree[a] += 1;
+	if(m->x[a] == NULL){
+			m->numVertices++;
+	}
 	m->x[a] = temp;
-	if(directed){
-		insertEdge(m , b , a , false);
+	if(directed == false){
+		insertEdge(m , b , a , true);
 	}else{
 		m->numEdges++;		
 	}
 
 }
 
-void printGraph(){
-	
+void printGraph(map* m){
+	/*First we access each of the node and then print the nodes that are connected to */
+	int n = m->numVertices;
+	int i ; 
+	for(i = 1 ; i <= n ; i++){
+		edgenode* temp = m->x[i];
+		cout << i << "->";
+		while(temp){
+			cout << temp->y <<"->";
+			temp = temp->link;
+		}
+		cout <<endl;
+	}
 }
 
 int main(){
 	cout <<"works\n";
+	map* m;
+	initializeMap(&m);
+	insertEdge(m , 1 , 2 , false);
+	insertEdge(m , 1 , 5 , false);
+	insertEdge(m , 2 , 5 , false);
+	insertEdge(m , 5 , 4 , false);
+	insertEdge(m , 3 , 2 , false);
+	insertEdge(m , 4 , 3 , false);
+	insertEdge(m , 4 , 2 , false);
+
+	printGraph(m);
 	return 0;
 }

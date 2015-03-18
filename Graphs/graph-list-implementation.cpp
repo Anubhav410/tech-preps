@@ -11,17 +11,17 @@ typedef struct edgenode{
 }edgenode;
 
 
-typedef struct map{
+typedef struct graph{
 	int numVertices;
 	int numEdges;
 	edgenode *x[MAXNUM];/*adjacency info per node*/
 	int degree[MAXNUM];
 
-}map;
+}graph;
 
 
-void initializeMap(map** m){
-	*m = (map*)malloc(sizeof(map));
+void initializeGraph(graph** m){
+	*m = (graph*)malloc(sizeof(graph));
 	(*m)->numEdges = 0;
 	(*m)->numVertices = 0;
 	int i;
@@ -31,7 +31,7 @@ void initializeMap(map** m){
 	}
 }
 
-void insertEdge(map* m , int a , int b , bool directed){
+void insertEdge(graph* m , int a , int b , bool directed){
 	edgenode* temp = (edgenode*)malloc(sizeof(edgenode));
 
 	temp->y = b;
@@ -51,7 +51,7 @@ void insertEdge(map* m , int a , int b , bool directed){
 
 }
 
-void printGraph(map* m){
+void printGraph(graph* m){
 	/*First we access each of the node and then print the nodes that are connected to */
 	int n = m->numVertices;
 	int i ; 
@@ -68,8 +68,8 @@ void printGraph(map* m){
 
 int main(){
 	cout <<"works\n";
-	map* m;
-	initializeMap(&m);
+	graph* m;
+	initializeGraph(&m);
 	insertEdge(m , 1 , 2 , false);
 	insertEdge(m , 1 , 5 , false);
 	insertEdge(m , 2 , 5 , false);

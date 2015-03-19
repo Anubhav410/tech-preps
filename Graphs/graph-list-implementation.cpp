@@ -58,7 +58,9 @@ void make_test_graph(graph* m ){
 	insertEdge(m , 5 , 4 , false);
 	insertEdge(m , 3 , 2 , false);
 	insertEdge(m , 4 , 3 , false);
-	insertEdge(m , 4 , 2 , false);
+//	insertEdge(m , 4 , 2 , false);
+	insertEdge(m , 1 , 6 , false);
+
 }
 
 void printGraph(graph* m){

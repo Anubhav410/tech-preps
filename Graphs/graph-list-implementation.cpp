@@ -54,7 +54,7 @@ void insertEdge(graph* m , int a , int b , bool directed){
 void make_test_graph(graph* m ){
 	insertEdge(m , 1 , 2 , false);
 	insertEdge(m , 1 , 5 , false);
-	insertEdge(m , 2 , 5 , false);
+//	insertEdge(m , 2 , 5 , false);
 	insertEdge(m , 5 , 4 , false);
 	insertEdge(m , 3 , 2 , false);
 	insertEdge(m , 4 , 3 , false);
@@ -77,6 +77,7 @@ void printGraph(graph* m){
 		cout <<endl;
 	}
 }
+
 /*
 int main(){
 	cout <<"works\n";

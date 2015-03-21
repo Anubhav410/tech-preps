@@ -1,6 +1,10 @@
 #include "graph-list-implementation.cpp"
 #include<queue>
 
+bool processed[MAXNUM+1];
+bool parents[MAXNUM + 1 ];
+bool discovered[ MAXNUM +  1];
+
 void process_edge(int x, int y){
 	cout << "Edge : " << x << " --> " << y <<"\n";  
 }
@@ -10,9 +14,6 @@ void process_node(int i){
 }
 
 void bfs(graph* m , int start){
-	bool processed[MAXNUM+1];
-	bool parents[MAXNUM + 1 ];
-	bool discovered[ MAXNUM +  1];
 
 	queue<int> Q;
 	/*
@@ -51,7 +52,7 @@ void bfs(graph* m , int start){
 		}
 	}
 }
-
+/*
 int main(){
 	cout <<"works\n";
 	graph* m;
@@ -63,3 +64,5 @@ int main(){
 
 
 }
+
+*/

@@ -12,6 +12,7 @@ typedef struct edgenode{
 
 
 typedef struct graph{
+	bool directed;
 	int numVertices;
 	int numEdges;
 	edgenode *x[MAXNUM];/*adjacency info per node*/
@@ -39,19 +40,36 @@ void insertEdge(graph* m , int a , int b , bool directed){
 	temp->link = m->x[a];
 
 	m->degree[a] += 1;
-	if(m->x[a] == NULL){
-			m->numVertices++;
-	}
 	m->x[a] = temp;
 	if(directed == false){
 		insertEdge(m , b , a , true);
 	}else{
 		m->numEdges++;		
+
 	}
 
 }
 
+void make_test_directed_graph(graph* m ){
+	m->numVertices = 7;
+	m->directed = true;
+	insertEdge(m , 1 , 2 , true);
+	insertEdge(m , 1 , 3 , true);
+	insertEdge(m , 2 , 4 , true);
+	insertEdge(m , 2 , 3 , true);
+	insertEdge(m , 3 , 5 , true);
+	insertEdge(m , 3 , 6 , true);
+	insertEdge(m , 5 , 4 , true);
+	insertEdge(m , 6 , 5 , true);
+	insertEdge(m , 7 , 6 , true);
+	insertEdge(m , 7 , 1 , true);
+
+}
 void make_test_graph(graph* m ){
+		m->numVertices = 6;
+
+	m->directed = false;
+		
 	insertEdge(m , 1 , 2 , false);
 	insertEdge(m , 1 , 5 , false);
 //	insertEdge(m , 2 , 5 , false);

@@ -124,22 +124,23 @@ void printGraph(graph* m ){
 	}
 }
 
-
+/*
 int main(){
 	cout <<"works\n";
 	graph* m;
 	initializeGraph(&m);
 	make_test_weighted_graph(m );
-	/*insertEdge(m , 1 , 2 , false);
+	insertEdge(m , 1 , 2 , false);
 	insertEdge(m , 1 , 5 , false);
 	insertEdge(m , 2 , 5 , false);
 	insertEdge(m , 5 , 4 , false);
 	insertEdge(m , 3 , 2 , false);
 	insertEdge(m , 4 , 3 , false);
 	insertEdge(m , 4 , 2 , false);
-	*/
+	
 //	make_test_graph(m);
 
 	printGraph(m);
 	return 0;
 }
+*/
